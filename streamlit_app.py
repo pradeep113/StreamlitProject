@@ -1,10 +1,15 @@
 import streamlit as st
-
+from pathlib import Path
 # Add a title to your app
 st.title("Upload Invoices here")
 
+#Define the desired path
+path = "/Users/pradeepkumar/Pictures/uploaded_files"
+file_path = Path(path)
+
 #create a file uploader
-file = st.file_uploader("pick a file")
+uploaded_file = st.file_uploader(file_path)
+
 # Create a slider widget to select a value
 #selected_value = st.slider("Select a value", 0, 100)
 
