@@ -8,7 +8,7 @@ path = "/Users/pradeepkumar/Pictures/uploaded_files"
 file_path = Path(path)
 
 #create a file uploader
-uploaded_file = st.file_uploader(file_path)
+uploaded_file = st.file_uploader("Pick a file")
 
 # Create a slider widget to select a value
 #selected_value = st.slider("Select a value", 0, 100)
