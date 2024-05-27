@@ -1,5 +1,7 @@
 import streamlit as st
+import pandas as pd
 from pathlib import Path
+
 
 #***Function to read all pdf invlices and extract its data and writes on csv file.***
 def all_pdf_text_extract(uploaded_files):
@@ -22,7 +24,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
-  print(selected_lines)
+  st.write(selected_lines)
   print(text)
 
 def main():
