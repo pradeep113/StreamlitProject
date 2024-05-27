@@ -11,7 +11,7 @@ def all_pdf_text_extract(uploaded_files):
 #*****Function to read pdf invoices and extract its data and writes on a csv file.*****
 def pdf_text_extract(uploaded_file, output_csv):
   st.text(f"File name is : {uploaded_file.name}")
-  pdf_path = uploaded_file.name
+  pdf_path = uploaded_file
   with open(pdf_path, 'rb') as pdf_file:
         pdf_reader = PyPDF2.PdfReader(pdf_file)
         text = ''
