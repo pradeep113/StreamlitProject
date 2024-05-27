@@ -14,12 +14,12 @@ def all_pdf_text_extract(uploaded_files):
 #*****Function to read pdf invoices and extract its data and writes on a csv file.*****
 def pdf_text_extract(uploaded_file, output_csv):
   st.text(f"File name is : {uploaded_file.name}")
-  pdf_path = uploaded_file
-  with open(pdf_path, 'rb') as pdf_file:
-        pdf_reader = PyPDF2.PdfReader(pdf_file)
-        text = ''
-        for page in pdf_reader.pages:
-            text += page.extract_text() + '\n'
+  pdf_file = uploaded_file
+  #with open(pdf_path, 'rb') as pdf_file:
+  pdf_reader = PyPDF2.PdfReader(pdf_file)
+  text = ''
+  for page in pdf_reader.pages:
+        text += page.extract_text() + '\n'
 
   # Extract the desired lines (modify as needed)
   selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
