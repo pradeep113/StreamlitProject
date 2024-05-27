@@ -1,5 +1,11 @@
 import streamlit as st
 from pathlib import Path
+
+#*****Function to read pdf invlices and extract its data and writes on a csv file.*****
+def pdfdatatocsv():
+  
+  
+
 # Add a title to your app
 st.title("Upload Invoices here")
 
@@ -9,6 +15,7 @@ file_path = Path(path)
 
 #create a file uploader
 uploaded_file = st.file_uploader("Pick a file")
+print("FIles uploaded")
 
 # Create a slider widget to select a value
 #selected_value = st.slider("Select a value", 0, 100)
