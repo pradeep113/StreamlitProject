@@ -4,6 +4,7 @@ from pathlib import Path
 #*****Function to read pdf invlices and extract its data and writes on a csv file.*****
 def pdf_text_extract():
   print("Script executed")
+  st.text("Script executedd")
 
 def main():
   # Add a title to your app
