@@ -13,8 +13,7 @@ file_path = Path(path)
 
 #create a file uploader
 uploaded_file = st.file_uploader("Pick a file")
-print("FIles uploaded")
-
+st.text("Files uploaded")
 # Create a slider widget to select a value
 #selected_value = st.slider("Select a value", 0, 100)
 
