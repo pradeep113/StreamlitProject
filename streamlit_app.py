@@ -3,8 +3,9 @@ from pathlib import Path
 
 #***Function to read all pdf invlices and extract its data and writes on csv file.***
 def all_pdf_text_extract(uploaded_files):
+  st.write("Files Uploaded are :")
   for each_file in uploaded_files:
-      st.write("File name:", each_file.name)
+      st.write(each_file.name)
   
   
 #*****Function to read pdf invoices and extract its data and writes on a csv file.*****
