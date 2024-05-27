@@ -32,7 +32,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   if selected_lines:
                 #df = pd.DataFrame(selected_lines)
                 #df.to_csv(output_csv, mode='a', index=False)
-                invoicename.append(pdf_file)
+                invoicename.append(pdf_file.name)
                 invtotal.append(selected_lines[0])
                 invoicedate.append(selected_lines[1])
                 invoicenum.append(selected_lines[1])
