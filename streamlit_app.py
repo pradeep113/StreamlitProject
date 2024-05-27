@@ -1,7 +1,13 @@
 import streamlit as st
 from pathlib import Path
 
-#*****Function to read pdf invlices and extract its data and writes on a csv file.*****
+#***Function to read all pdf invlices and extract its data and writes on csv file.***
+def all_pdf_text_extract(uploaded_files):
+  for each_file in uploaded_files:
+      st.write("File name:", each_file.name)
+  
+  
+#*****Function to read pdf invoices and extract its data and writes on a csv file.*****
 def pdf_text_extract(uploaded_file):
   st.text(f"File name is : {uploaded_file.name}")
 
@@ -29,7 +35,7 @@ def main():
               
   #Create a button labelled "Extract"
   if st.button("extract", key="Extract"):
-    pdf_text_extract()
+    all_pdf_text_extract(uploaded_files)
     
   # Create a slider widget to select a value
   #selected_value = st.slider("Select a value", 0, 100)
