@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import PyPDF2
 from pathlib import Path
 
 
