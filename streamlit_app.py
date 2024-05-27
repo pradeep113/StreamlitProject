@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import PyPDF2
 from pathlib import Path
+import subprocess
 
 
 
@@ -27,6 +28,8 @@ def pdf_text_extract(uploaded_file, output_csv):
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
   st.write(selected_lines)
+  result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+  st.write(result.stdout)
 
 
 def main():
