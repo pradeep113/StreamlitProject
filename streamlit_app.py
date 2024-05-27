@@ -18,12 +18,12 @@ def pdf_text_extract(uploaded_file, output_csv):
         for page in pdf_reader.pages:
             text += page.extract_text() + '\n'
 
-    # Extract the desired lines (modify as needed)
-    selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
-    df = pd.DataFrame({'Text': [selected_lines]})
-    df.to_csv(output_csv, index=False)
-    print(selected_lines)
-    print(text)
+  # Extract the desired lines (modify as needed)
+  selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
+  df = pd.DataFrame({'Text': [selected_lines]})
+  df.to_csv(output_csv, index=False)
+  print(selected_lines)
+  print(text)
 
 def main():
 
