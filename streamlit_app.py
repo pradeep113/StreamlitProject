@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import PyPDF2
 from pathlib import Path
+import logging
 
 
 #***Function to read all pdf invlices and extract its data and writes on csv file.***
@@ -26,7 +27,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
   st.write(selected_lines)
-  print(text)
+
 
 def main():
   # Add a title to your app
@@ -59,6 +60,9 @@ def main():
   st.header("",divider='green')
   if st.button("EXTRACT", key="Extract"):
     all_pdf_text_extract(uploaded_files)
+
+  streamlit_root_logger = logging.getLogger(st.__name__)
+  print(streamlit_root_logger._loggers)
     
   # Create a slider widget to select a value
   #selected_value = st.slider("Select a value", 0, 100)
