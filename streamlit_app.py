@@ -14,9 +14,15 @@ def main():
   file_path = Path(path)
 
   #create a file uploader
-  uploaded_file = st.file_uploader("Choose files", accept_multiple_files=True)
+  uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
   st.text("Files uploaded")
-
+  if uploaded_files:
+        for uploaded_file in uploaded_files:
+            # Read the uploaded file (assuming CSV format)
+            #dataframe = pd.read_csv(uploaded_file)
+            st.write(f"File name: {uploaded_file.name}")
+            #st.write(dataframe)  # Display the data (you can customize this part)
+          
   #Create a button labelled "Extract"
   if st.button("extract", key="Extract"):
     pdf_text_extract()
