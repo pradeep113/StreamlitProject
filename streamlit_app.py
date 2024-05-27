@@ -29,8 +29,6 @@ def pdf_text_extract(uploaded_file, output_csv):
   print(text)
 
 def main():
-
-  
   # Add a title to your app
   st.title("Upload Invoices here")
 
@@ -43,7 +41,7 @@ def main():
 
   #create a file uploader
   uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
-  st.text("Files uploaded")
+  st.header("FILES UPLOADED")
   if uploaded_files:
         for uploaded_file in uploaded_files:
             # Read the uploaded file (assuming CSV format)
