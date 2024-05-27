@@ -32,8 +32,8 @@ def pdf_text_extract(uploaded_file, output_csv):
   #if selected_line is not none:
    # st.download_button("Download Ouput.csv file", str(selected_lines[0]))
 
-  ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
-  print('File converted successfully!')
+  #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
+  #print('File converted successfully!')
 
 
 def main():
