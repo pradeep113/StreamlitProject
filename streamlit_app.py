@@ -26,9 +26,17 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   # Extract the desired lines (modify as needed)
   selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
-  df = pd.DataFrame({'Text': [selected_lines]})
-  df.to_csv(output_csv, index=False)
-  st.write(selected_lines)
+  #df = pd.DataFrame({'Text': [selected_lines]})
+  #df.to_csv(output_csv, index=False)
+  #st.write(selected_lines)
+  if selected_lines:
+                #df = pd.DataFrame(selected_lines)
+                #df.to_csv(output_csv, mode='a', index=False)
+                invoicename.append(pdf_file)
+                invtotal.append(selected_lines[0])
+                invoicedate.append(selected_lines[1])
+                invoicenum.append(selected_lines[1])
+                st.write(selected_lines)  
   #if selected_line is not none:
    # st.download_button("Download Ouput.csv file", str(selected_lines[0]))
 
@@ -62,13 +70,22 @@ def main():
             if st.button(f"Extract : {uploaded_file.name}"):
                pdf_text_extract(uploaded_file, output_csv)
             
-              
+  
+  #List of all types
+  invoicename = []
+  invoicenum =[]
+  invoicedate = []
+  invtotal = []  
+  
   #Create a button labelled "Extract"
   st.header("",divider='green')
   if st.button("EXTRACT", key="Extract"):
     all_pdf_text_extract(uploaded_files)
 
-
+  data = {'File_Name': invoicename,
+        'Invoice_Number': invoicenum,
+        'Invoice_date': invoicedate,
+        'Invoice_Total': invtotal}
     
   # Create a slider widget to select a value
   #selected_value = st.slider("Select a value", 0, 100)
