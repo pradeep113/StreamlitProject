@@ -28,8 +28,6 @@ def pdf_text_extract(uploaded_file, output_csv):
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
   st.write(selected_lines)
-  result = subprocess.run(["df"], capture_output=True, text=True)
-  st.write(result.stdout)
   st.download_button("Download Ouput.csv file", selected_lines)
 
 
