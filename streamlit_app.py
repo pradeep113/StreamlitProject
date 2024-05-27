@@ -28,7 +28,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
   st.write(selected_lines)
-  st.download_button(label="Download Ouput.csv file", data=csv, mime="text/csv", str(selected_lines[0]))
+  st.download_button(label="Download Ouput.csv file", data=csv, mime="text/csv", filename="output.csv")
 
 
 def main():
