@@ -30,6 +30,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   st.write(selected_lines)
   result = subprocess.run(["df"], capture_output=True, text=True)
   st.write(result.stdout)
+  st.download_button("Download Ouput.csv file", selected_lines)
 
 
 def main():
