@@ -3,7 +3,7 @@ from pathlib import Path
 
 #*****Function to read pdf invlices and extract its data and writes on a csv file.*****
 def pdf_text_extract(uploaded_file):
-  st.text("File name is : uploaded_file")
+  st.text(f"File name is : {uploaded_file.name}")
 
 def main():
   # Add a title to your app
@@ -24,7 +24,7 @@ def main():
             #st.write(dataframe)  # Display the data (you can customize this part)
             #Create button for each file
             if st.button(f"Extract : {uploaded_file.name}"):
-               pdf_text_extract({uploaded_file.name})
+               pdf_text_extract(uploaded_file)
             
               
   #Create a button labelled "Extract"
