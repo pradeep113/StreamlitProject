@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import PyPDF2
 from pathlib import Path
+import ocrmypdf
 
 
 
@@ -30,6 +31,9 @@ def pdf_text_extract(uploaded_file, output_csv):
   st.write(selected_lines)
   #if selected_line is not none:
    # st.download_button("Download Ouput.csv file", str(selected_lines[0]))
+
+  ocrmypdf.ocr(pdf_file, put.pdf, skip_text=True)
+  print('File converted successfully!')
 
 
 def main():
