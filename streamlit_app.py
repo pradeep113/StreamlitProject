@@ -62,7 +62,7 @@ def main():
     all_pdf_text_extract(uploaded_files)
 
   streamlit_root_logger = logging.getLogger(st.__name__)
-  print(streamlit_root_logger._loggers)
+  st.write(streamlit_root_logger._loggers)
     
   # Create a slider widget to select a value
   #selected_value = st.slider("Select a value", 0, 100)
