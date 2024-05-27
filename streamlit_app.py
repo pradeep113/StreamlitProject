@@ -22,8 +22,10 @@ def main():
             #dataframe = pd.read_csv(uploaded_file)
             st.write(f"File name: {uploaded_file.name}")
             #st.write(dataframe)  # Display the data (you can customize this part)
-            st.button("extract", key="Extract"):
-             # pdf_text_extract() 
+            #Create button for each file
+            if st.button(f"Process {uploaded_fime.name}"):
+              pdf_text_extract()
+            
               
   #Create a button labelled "Extract"
   if st.button("extract", key="Extract"):
