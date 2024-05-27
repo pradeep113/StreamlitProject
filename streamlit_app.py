@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import PyPDF2
 from pathlib import Path
-import subprocess
+
 
 
 
@@ -63,8 +63,6 @@ def main():
   if st.button("EXTRACT", key="Extract"):
     all_pdf_text_extract(uploaded_files)
 
-  text_contents = '''This is some text'''
-  st.download_button("Download some Text", text_contents)
 
     
   # Create a slider widget to select a value
