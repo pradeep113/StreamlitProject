@@ -23,7 +23,7 @@ def main():
             st.write("File name:", uploaded_file.name)
             #st.write(dataframe)  # Display the data (you can customize this part)
             #Create button for each file
-            if st.button("Extract : uploaded_file.name"):
+            if st.button("Extract : {uploaded_file.name}"):
                pdf_text_extract({uploaded_file.name})
             
               
