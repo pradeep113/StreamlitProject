@@ -2,8 +2,6 @@ import streamlit as st
 from pathlib import Path
 
 #*****Function to read pdf invlices and extract its data and writes on a csv file.*****
-def pdfdatatocsv():
-  
   
 
 # Add a title to your app
