@@ -56,6 +56,7 @@ def main():
             
               
   #Create a button labelled "Extract"
+  st.header("",divider='green')
   if st.button("EXTRACT", key="Extract"):
     all_pdf_text_extract(uploaded_files)
     
