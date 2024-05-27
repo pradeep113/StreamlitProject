@@ -28,7 +28,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   df = pd.DataFrame({'Text': [selected_lines]})
   df.to_csv(output_csv, index=False)
   st.write(selected_lines)
-  result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+  result = subprocess.run(["pwd"], capture_output=True, text=True)
   st.write(result.stdout)
 
 
