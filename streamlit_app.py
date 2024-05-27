@@ -45,7 +45,7 @@ def main():
         for uploaded_file in uploaded_files:
             # Read the uploaded file (assuming CSV format)
             #dataframe = pd.read_csv(uploaded_file)
-            st.header("File name:", uploaded_file.name)
+            st.header(f"File name:", uploaded_file.name, "uploaded")
             #st.write(dataframe)  # Display the data (you can customize this part)
             #Create button for each file
             if st.button(f"Extract : {uploaded_file.name}"):
