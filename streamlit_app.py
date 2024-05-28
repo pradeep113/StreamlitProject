@@ -34,7 +34,7 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
-  subprocess.run(['pwd'])
+  st.write(subprocess.run(['pwd']))
   subprocess.run(['ls', '-l'])
 
 
