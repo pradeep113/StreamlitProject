@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import PyPDF2
 from pathlib import Path
+import subprocess
 
 
 
@@ -25,14 +26,16 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   # Extract the desired lines (modify as needed)
   selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
-  #df = pd.DataFrame({'Text': [selected_lines]})
-  #df.to_csv(output_csv, index=False)
+  df = pd.DataFrame({'Text': [selected_lines]})
+  df.to_csv(output_csv, index=False)
   st.write(selected_lines)
   #if selected_line is not none:
    # st.download_button("Download Ouput.csv file", str(selected_lines[0]))
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
+  suprocess.run(['pwd'])
+  suprocess.run(['ls', '-l'])
 
 
 def main():
