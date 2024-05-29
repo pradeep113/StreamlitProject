@@ -41,7 +41,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   #df.to_csv(output_csv, index=False)
   st.write(selected_lines)
   #if selected_line is not none:
-  st.download_button("Download Ouput file", str(selected_lines_re, selected_lines))
+  st.download_button("Download Ouput file", str(selected_lines))
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
