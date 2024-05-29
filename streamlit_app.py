@@ -28,11 +28,18 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   # Extract the desired lines (modify as needed)
   selected_lines = [line for line in text.split('\n') if line.startswith("admin") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
+
+  #Extract the desired line having strings contains in line.
+  pattern = "Invoice Number"  # Replace with your desired pattern.
+  for line in text:
+    if re.search(pattern, line):
+      selected_lines_re = line
+  
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
   st.write(selected_lines)
   #if selected_line is not none:
-  st.download_button("Download Ouput file", str(selected_lines))
+  st.download_button("Download Ouput file", str(selected_lines_re, selected_lines))
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
