@@ -23,12 +23,12 @@ def pdf_text_extract(uploaded_file, output_csv):
   pdf_reader = PyPDF2.PdfReader(pdf_file)
   text = ''
   for page in pdf_reader.pages:
-        text += page.extract_text() + '\n'
+        text += '\n' +page.extract_text() + '\n'
  
   st.write(text)
 
   # Extract the desired lines (modify as needed)
-  selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
+  selected_lines = [line for line in text.split('\n') if line.startswith("Invoice Number") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
   
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
