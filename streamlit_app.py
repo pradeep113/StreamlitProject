@@ -3,7 +3,6 @@ import pandas as pd
 import PyPDF2
 from pathlib import Path
 import subprocess
-from datetime import datetime
 import re
 
 
@@ -63,10 +62,8 @@ def main():
             # Read the uploaded file (assuming CSV format)
             st.write(f"File name:", uploaded_file.name, "uploaded")
             #st.write(f"at:", {uploaded_file.uploaded_at})
-            #timestamp for file 
-            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             #Create button for each file
-            if st.button(f"Extract : {uploaded_file.name} at {timestamp}"):
+            if st.button(f"Extract : {uploaded_file.name}"):
                pdf_text_extract(uploaded_file, output_csv)
             
 
