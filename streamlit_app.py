@@ -27,12 +27,12 @@ def pdf_text_extract(uploaded_file, output_csv):
   st.write(text)
 
   # Extract the desired lines (modify as needed)
-  selected_lines = [line for line in text.split('\n') if line.startswith("Invoice") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
+  selected_lines = [line for line in text.split('\n') if line.startswith("From") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
   st.write(selected_lines)
   #if selected_line is not none:
-  st.download_button("Download Ouput.csv file", str(selected_lines))
+  st.download_button("Download Ouput file", str(selected_lines))
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
