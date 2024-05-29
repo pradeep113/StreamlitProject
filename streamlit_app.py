@@ -28,7 +28,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   st.write(text)
 
   # Extract the desired lines (modify as needed)
-  selected_lines = [line for line in text.split('\n') if line.startswith("admin") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
+  selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
 
   #Extract the desired line having strings contains in line.
   pattern = "Invoice Number"  # Replace with your desired pattern.
