@@ -23,6 +23,8 @@ def pdf_text_extract(uploaded_file, output_csv):
   text = ''
   for page in pdf_reader.pages:
         text += page.extract_text() + '\n'
+ 
+  st.write(text)
 
   # Extract the desired lines (modify as needed)
   selected_lines = [line for line in text.split('\n') if line.startswith("Total Due") or line.startswith("Invoice Date")] 
@@ -34,8 +36,7 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   #ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
   #print('File converted successfully!')
-  st.write(subprocess.run(['pwd']))
-  st.write(subprocess.run(['ls', '-l']))
+
 
 
 def main():
