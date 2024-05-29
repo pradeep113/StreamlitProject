@@ -27,7 +27,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   st.write(text)
 
   # Extract the desired lines (modify as needed)
-  selected_lines = [line for line in text.split('\n') if line.startswith("Demo") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
+  selected_lines = [line for line in text.split('\n') if line.startswith("DEMO") or line.startswith("Total Due") or line.startswith("Invoice Date")] 
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
   st.write(selected_lines)
