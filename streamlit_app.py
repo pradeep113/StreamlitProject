@@ -34,6 +34,7 @@ def pdf_text_extract(uploaded_file, output_csv):
   for line in text:
     if re.search(pattern, line):
       selected_lines_re = line
+      st.write(selected_lines_re)
   
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
