@@ -63,8 +63,10 @@ def main():
             st.write(f"File name:", uploaded_file.name, "uploaded")
             st.write(f"at:", uploaded_file.uploaded_at)
             #st.write(f"at:", {uploaded_file.uploaded_at})
+            #timestamp for file 
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             #Create button for each file
-            if st.button(f"Extract : {uploaded_file.name}"):
+            if st.button(f"Extract : {uploaded_file.name} at {timestamp}"):
                pdf_text_extract(uploaded_file, output_csv)
             
 
