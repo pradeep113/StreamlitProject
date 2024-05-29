@@ -60,7 +60,7 @@ def main():
   if uploaded_files:
         for uploaded_file in uploaded_files:
             # Read the uploaded file (assuming CSV format)
-            st.write(f"File name:", uploaded_file.name, "uploaded at", uploaded_files.uploaded_at)
+            st.write(f"File name:", {uploaded_file.name}, "uploaded at", {uploaded_file.uploaded_at})
             #Create button for each file
             if st.button(f"Extract : {uploaded_file.name}"):
                pdf_text_extract(uploaded_file, output_csv)
