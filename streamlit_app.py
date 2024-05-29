@@ -32,10 +32,10 @@ def pdf_text_extract(uploaded_file, output_csv):
 
   #Extract the desired line having strings contains in line.
   pattern = "Invoice Number"  # Replace with your desired pattern.
-  #for line in text:
-   # if re.search(pattern, line):
-    #  selected_lines_re = line
-     # st.write(selected_lines_re)
+  for line in text:
+    if re.search(pattern, line):
+      selected_lines_re = line
+      st.write(selected_lines_re)
   
   #df = pd.DataFrame({'Text': [selected_lines]})
   #df.to_csv(output_csv, index=False)
