@@ -43,6 +43,7 @@ def pdf_text_extract(uploaded_file, output_csv):
 
 def main():
   st.markdown('<i class="fas fa-bicycle"></i>', unsafe_allow_html=True)  # Displays a bicycle icon
+  st.icon("home")
   # Add a title to your app
   st.header("Upload Invoices here", divider='blue')
 
