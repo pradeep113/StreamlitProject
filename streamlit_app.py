@@ -61,6 +61,7 @@ def main():
         for uploaded_file in uploaded_files:
             # Read the uploaded file (assuming CSV format)
             st.write(f"File name:", uploaded_file.name, "uploaded")
+            st.write(f"at:", uploaded_file.uploaded_at)
             #st.write(f"at:", {uploaded_file.uploaded_at})
             #Create button for each file
             if st.button(f"Extract : {uploaded_file.name}"):
