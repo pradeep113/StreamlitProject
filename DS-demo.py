@@ -5,6 +5,8 @@ import PyPDF2
 from pathlib import Path
 import subprocess
 import re
+import torch
+from PIL import Image
 from pdf2image import convert_from_path, convert_from_bytes
 from transformers import Pix2StructForConditionalGeneration as psg
 from transformers import Pix2StructProcessor as psp
