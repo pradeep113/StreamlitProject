@@ -21,6 +21,11 @@ processor = psp.from_pretrained("google/pix2struct-docvqa-base")
 
 
 # _____________________________________________________________________________________________________
+# ***Function to read all pdf invlices and extract its data and writes on csv file.***
+def all_pdf_text_extract(uploaded_files):
+    st.write("Files Uploaded are :")
+    for each_file in uploaded_files:
+        st.write(each_file.name)
 
 
 # *****Function to read pdf invoices and extract its data and writes on a csv file.*****
@@ -177,27 +182,45 @@ def main():
             all_document_data.append(invoice_data)
             st.write("DONE for file ",uploaded_file.name)
 
-    # Create a DataFrame
-    df = pd.DataFrame(all_document_data)
-    #df.loc["Answers"] = df.loc["Answers"].apply(lambda x: x[:count] if len(x) >= count else x)
+        # Create a DataFrame
+        df = pd.DataFrame(all_document_data)
+        df["Answers"] = df["Answers"].apply(lambda x: x[:count] if len(x) >= count else x)
   
-    df1 = df
-    df2 = df
-    df3 = df2
+        df1 = df
   
-    # Apply the function to split the 'Answers' column
-    #df1 = split_list_to_columns(df1, 'Answers')
+        # Apply the function to split the 'Answers' column
+        df1 = split_list_to_columns(df1, 'Answers')
 
 
-    # Initialize an empty list to store the answers
-    #answers_list = []
+        # Initialize an empty list to store the answers
+        #answers_list = []
 
-    # Apply the function to each row
-    #for idx, row in df.iterrows():
-     #   extract_elements_with_cell_id(idx, row)
+        # Apply the function to each row
+        #for idx, row in df.iterrows():
+        #   extract_elements_with_cell_id(idx, row)
 
-    #print("answers_list:", answers_list)
-    st.write(df)
+        #print("answers_list:", answers_list)
+        #st.write(df1.columns.tolist())
+
+        # Split the "Answer" column into three new columns
+        #df1[['Bill Date', 'Bill No', 'Total']] = df1['Answers'].str.split('\\s+', expand=True)
+        # Drop the original "Answers" column
+        #st.write(df1['Answers'].str.split('\\s+', expand=True))
+        # Create new columns for each value in the "Answer" list
+
+        #df1['Answer1'] = df1['Answers'].apply(lambda x: x[0])
+
+        #df1['Answer2'] = df1['Answers'].apply(lambda x: x[1])
+
+        #df1['Answer3'] = df1['Answers'].apply(lambda x: x[2])
+ 
+        # Drop the original "Answer" column
+
+        #df1.drop(columns=['Answers'], inplace=True)
+
+
+
+        st.write(df1)
 
 
 
@@ -206,3 +229,4 @@ def main():
  
 if __name__ == "__main__":
     main()
+
