@@ -73,7 +73,8 @@ def split_list_to_columns(df, column_name):
     max_len = max(len(item) for item in df[column_name])
     
     # Create new column names based on the maximum number of elements
-    new_columns = [f'Answer_{i+1}' for i in range(max_len)]
+    #new_columns = [f'Answer_{i+1}' for i in range(max_len)]
+    new_columns = ["Invoice_date", "Invoice_number", "Total"]
     
     # Create DataFrame from the split values and concatenate it with the original DataFrame
     df_split = pd.DataFrame(df[column_name].tolist(), columns=new_columns)
@@ -135,7 +136,6 @@ def main():
     # create a file uploader
     uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
 
-    st.header("", divider="blue")
 
     # Define the directories containing the PDF files
     invoice_directory = "./invoices"
@@ -144,10 +144,9 @@ def main():
     questions = [
         "What is the Invoice Date",
         "What is the Invoice No.?",
-        "What is the Total Due?",
+        "What is the Total?",
     ]
     count = len(questions)
-    count
 
     # Initialize lists to store document names, questions, and answers
     all_document_data = []
@@ -157,19 +156,15 @@ def main():
         images = convert_from_path(pdf_path)
         return images
 
-    # Device selection
-    DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-    model = psg.from_pretrained("google/pix2struct-docvqa-base").to(DEVICE)
-    processor = psp.from_pretrained("google/pix2struct-docvqa-base")
 
-    if uploaded_files:
-        for uploaded_file in uploaded_files:
+    #if uploaded_files:
+        #for uploaded_file in uploaded_files:
             # Read the uploaded file (assuming CSV format)
-            st.write(f"File name:", uploaded_file.name, "uploaded")
+            #st.write(f"File name:", uploaded_file.name, "uploaded")
             # st.write(f"at:", {uploaded_file.uploaded_at})
             # Create button for each file
-            if st.button(f"Extract : {uploaded_file.name}"):
-                pdf_text_extract(uploaded_file, output_csv)
+            #if st.button(f"Extract : {uploaded_file.name}"):
+                #pdf_text_extract(uploaded_file, output_csv)
 
     # Create a button labelled "Extract"
     st.header("", divider="green")
@@ -190,37 +185,17 @@ def main():
   
         # Apply the function to split the 'Answers' column
         df1 = split_list_to_columns(df1, 'Answers')
+        df2 = df1
+        df2.drop(columns=['Questions'], inplace=True)
 
 
-        # Initialize an empty list to store the answers
-        #answers_list = []
-
-        # Apply the function to each row
-        #for idx, row in df.iterrows():
-        #   extract_elements_with_cell_id(idx, row)
-
-        #print("answers_list:", answers_list)
-        #st.write(df1.columns.tolist())
-
-        # Split the "Answer" column into three new columns
-        #df1[['Bill Date', 'Bill No', 'Total']] = df1['Answers'].str.split('\\s+', expand=True)
-        # Drop the original "Answers" column
-        #st.write(df1['Answers'].str.split('\\s+', expand=True))
-        # Create new columns for each value in the "Answer" list
-
-        #df1['Answer1'] = df1['Answers'].apply(lambda x: x[0])
-
-        #df1['Answer2'] = df1['Answers'].apply(lambda x: x[1])
-
-        #df1['Answer3'] = df1['Answers'].apply(lambda x: x[2])
- 
         # Drop the original "Answer" column
 
         #df1.drop(columns=['Answers'], inplace=True)
 
 
 
-        st.write(df1)
+        st.write(df2)
 
 
 
