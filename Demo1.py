@@ -168,14 +168,30 @@ def main():
 
     # Create a button labelled "Extract"
     st.header("", divider="green")
+    
+    #Progress bar for file processing by model
+    latest_iteration = st.empty()
+    bar = st.progress(0)
+    i = 0
+    upload_percent = 0
+    count_upload_files = len(uploaded_files)
+    st.write("total files Uploaded: ", count_upload_files)
+
     if st.button("EXTRACT", key="Extract"):
         for uploaded_file in uploaded_files:
+            latest_iteration.text(f"Progress: {upload_percent}%")
             invoice_path = os.path.join(invoice_directory, uploaded_file.name)
             invoice_data = process_document(
                 invoice_path, questions
             )  # Assuming 'questions' is defined somewhere
             all_document_data.append(invoice_data)
-            st.write("DONE for file ",uploaded_file.name)
+            
+            # Update the progress bar
+            i = i + 1
+            upload_percent = int((i/count_upload_files) * 100)
+            latest_iteration.text(f"Progress: {upload_percent}%")
+            bar.progress(upload_percent)
+            #st.write("DONE for file ",uploaded_file.name)
 
         # Create a DataFrame
         df = pd.DataFrame(all_document_data)
