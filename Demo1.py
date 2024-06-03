@@ -11,6 +11,7 @@ from pdf2image import convert_from_path, convert_from_bytes
 from transformers import Pix2StructForConditionalGeneration as psg
 from transformers import Pix2StructProcessor as psp
 from functools import partial
+from time import gmtime, strftime
 
 
 # Device selection
@@ -18,45 +19,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 model = psg.from_pretrained("google/pix2struct-docvqa-base").to(DEVICE)
 processor = psp.from_pretrained("google/pix2struct-docvqa-base")
 
+#______________________________________________________________________________________________________________________________
 
-
-# _____________________________________________________________________________________________________
-# ***Function to read all pdf invlices and extract its data and writes on csv file.***
-def all_pdf_text_extract(uploaded_files):
-    st.write("Files Uploaded are :")
-    for each_file in uploaded_files:
-        st.write(each_file.name)
-
-
-# *****Function to read pdf invoices and extract its data and writes on a csv file.*****
-def pdf_text_extract(uploaded_file, output_csv):
-    st.text(f"File name is : {uploaded_file.name}")
-    pdf_file = uploaded_file
-    pdf_reader = PyPDF2.PdfReader(pdf_file)
-    text = ""
-    for page in pdf_reader.pages:
-        text += "\n" + page.extract_text() + "\n"
-
-    st.write(text)
-
-    # Extract the desired lines (modify as needed)
-    selected_lines = [
-        line
-        for line in text.split("\n")
-        if line.startswith("Invoice Number")
-        or line.startswith("Total Due")
-        or line.startswith("Invoice Date")
-    ]
-
-    # df = pd.DataFrame({'Text': [selected_lines]})
-    # df.to_csv(output_csv, index=False)
-    st.write(selected_lines)
-    # if selected_line is not none:
-    st.download_button("Download Ouput file", str(selected_lines))
-
-    # ocrmypdf.ocr(pdf_file, 'put.pdf', skip_text=True)
-    # print('File converted successfully!')
-# _________________________________________________________________________________________________________
 
 # Function to extract each element from the list in a cell, print cell ID, element number, and value,
 # and add values to answers_list
@@ -123,12 +87,15 @@ def generate(model, processor, img, questions):
 
 # _______________________________________________________________________________________________________
 def main():
+    
+    #Add logo
+    logo_url = "https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188"
+    st.image(logo_url, width=100)
+
+    
     # Add a title to your app
     st.header("Upload Invoices here", divider="blue")
 
-    # Define the desired path
-    # path = "/Users/pradeepkumar/Pictures/uploaded_files"
-    # file_path = Path(path)
 
     # files to create
     output_csv = "output.csv"
@@ -157,17 +124,11 @@ def main():
         return images
 
 
-    #if uploaded_files:
-        #for uploaded_file in uploaded_files:
-            # Read the uploaded file (assuming CSV format)
-            #st.write(f"File name:", uploaded_file.name, "uploaded")
-            # st.write(f"at:", {uploaded_file.uploaded_at})
-            # Create button for each file
-            #if st.button(f"Extract : {uploaded_file.name}"):
-                #pdf_text_extract(uploaded_file, output_csv)
-
     # Create a button labelled "Extract"
     st.header("", divider="green")
+
+    # cature time 
+    formatted_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     
     #Progress bar for file processing by model
     latest_iteration = st.empty()
@@ -175,7 +136,9 @@ def main():
     i = 0
     upload_percent = 0
     count_upload_files = len(uploaded_files)
-    st.write("total files Uploaded: ", count_upload_files)
+    for h in uploaded_files:
+        st.write("Total Files Uploaded: ", count_upload_files, " at:", formatted_time)
+        break
 
     if st.button("EXTRACT", key="Extract"):
         for uploaded_file in uploaded_files:
@@ -187,7 +150,7 @@ def main():
             all_document_data.append(invoice_data)
             
             # Update the progress bar
-            i = i + 1
+            i += 1
             upload_percent = int((i/count_upload_files) * 100)
             latest_iteration.text(f"Progress: {upload_percent}%")
             bar.progress(upload_percent)
@@ -211,8 +174,8 @@ def main():
 
 
 
-        st.write(df2)
-
+        #st.write(df2)
+        st.table(df2)
 
 
 
@@ -220,4 +183,3 @@ def main():
  
 if __name__ == "__main__":
     main()
-
