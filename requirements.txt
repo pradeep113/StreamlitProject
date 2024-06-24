@@ -1,3 +1,5 @@
 PyPDF2
 ocrmypdf
 torch
+pdf2image
+transformers
