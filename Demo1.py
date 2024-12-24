@@ -94,7 +94,7 @@ def main():
 
     
     # Add a title to your app
-    st.header("Upload Invoices here", divider="blue")
+    st.header("Upload Invoices Files here", divider="blue")
 
 
     # files to create
