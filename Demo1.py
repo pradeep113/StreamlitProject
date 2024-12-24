@@ -89,7 +89,7 @@ def generate(model, processor, img, questions):
 def main():
     
     #Add logo
-    logo_url = "https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188"
+    #logo_url = "https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188"
     st.image(logo_url, width=100)
 
     
@@ -101,7 +101,7 @@ def main():
     output_csv = "output.csv"
 
     # create a file uploader
-    #uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
 
 
     # Define the directories containing the PDF files
