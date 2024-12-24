@@ -89,8 +89,8 @@ def generate(model, processor, img, questions):
 def main():
     
     #Add logo
-    #logo_url = "https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188"
-    st.image(logo_url, width=100)
+    logo_url = "https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188"
+    #st.image(logo_url, width=100)
 
     
     # Add a title to your app
