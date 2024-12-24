@@ -44,7 +44,7 @@ def pdf_text_extract(uploaded_file, output_csv):
 def main():
   
   # Add a title to your app
-  st.header("Upload Invoices here", divider='blue')
+  st.header("Upload Invoices Files here", divider='blue')
 
   #Define the desired path
   path = "/Users/pradeepkumar/Pictures/uploaded_files"
