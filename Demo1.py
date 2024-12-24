@@ -101,7 +101,7 @@ def main():
     output_csv = "output.csv"
 
     # create a file uploader
-    uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
+    #uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
 
 
     # Define the directories containing the PDF files
